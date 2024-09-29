@@ -6,7 +6,7 @@
 void *hello(void *args)
 {
     printf("Hello Thread!\n");
-    pthread_exit();
+    
     return 0;
 }
 
