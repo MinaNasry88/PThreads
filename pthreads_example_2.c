@@ -1,7 +1,7 @@
 #include <pthread.h>
 #include <stdio.h>
 
-#define NUM_THREADS 4;
+#define NUM_THREADS 4
 
 
 void *threadFunc(void *pArg)
@@ -20,7 +20,7 @@ int main(void)
 
     for (i = 0; i < NUM_THREADS; i++)
     {
-        pthread_create(&tid[i], NULL, threadFunc, &i)
+        pthread_create(&tid[i], NULL, threadFunc, &i);
     }
 
     for (i = 0; i < NUM_THREADS; i++)
