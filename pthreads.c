@@ -14,8 +14,7 @@ int main(void)
 {
     int i;
     pthread_t tid[NUM_THREADS];
-    pthread_attr_t attr;
-
+    
     for (i = 0; i < NUM_THREADS; i++)
     {
         pthread_create(&tid[i], NULL, hello, NULL);
