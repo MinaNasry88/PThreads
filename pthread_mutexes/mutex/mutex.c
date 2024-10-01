@@ -102,5 +102,8 @@ void *consumer(void *param)
         fflush(stdout);
     }
 
+    printf("Consumer quiting.\n");
+    fflush(stdout);
+
     return 0;
 }
