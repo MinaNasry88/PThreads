@@ -80,7 +80,7 @@ void *consumer(void *param)
 {
     int i;
 
-    while(1)
+    for (int j = 0; j < 20; j++)
     {
         pthread_mutex_lock(&m);
 
@@ -89,14 +89,14 @@ void *consumer(void *param)
             exit(1);
         }
 
-        if (num == 0)       // Block if buffer is empty.
+        while (num == 0)       // Block if buffer is empty.
         {
             pthread_cond_wait(&c_cons, &m);
         }
 
         i = buff[rem];      // Buffer isn't empty, so remove element.
         rem = (rem + 1) % BUFF_SIZE;
-        rem--;
+        num--;
 
         pthread_mutex_unlock(&m);
 
