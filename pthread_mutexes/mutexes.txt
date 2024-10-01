@@ -1,0 +1,44 @@
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define BUFF_SIZE 3
+
+int buff[BUFF_SIZE];
+int add;
+int rem;
+int num;
+
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t c_cons = PTHREAD_COND_INITIALIZER;
+pthread_cond_t c_prod = PTHREAD_COND_INITIALIZER;
+
+void *producer(void *param);
+void *consumer(void *param);
+
+
+int main(int argc, char *argv[])
+{
+    pthread_t tid1, tid2;
+    int i;
+
+    if (pthread_create(&tid1, NULL, producer, NULL) != 0)
+    {
+        fprintf(stderr, "Unable to create producer thread.\n");
+        exit(1);
+    }
+
+    if (pthread_create(&tid2, NULL, consumer, NULL) != 0)
+    {
+        fprintf(stderr, "Unable to create consumer thread.\n);
+        exit(1);
+    }
+
+    pthread_join(tid1, NULL);
+    pthread_join(tid2, NULL);
+
+    printf("Parent quiting.\n);
+
+    return 0;
+}
+
