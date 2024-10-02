@@ -40,7 +40,7 @@ void *producer(void *param)
 {
     int i;
 
-    for (i = 0; i < 20; i++)
+    for (i = 1; i <= 20; i++)
     {
         pthread_mutex_lock(&m);
 
@@ -76,7 +76,7 @@ void *consumer(void *param)
 {
     int i;
 
-    for (i = 0; i < 20; i++)
+    for (i = 1; i <= 20; i++)
     {
         pthread_mutex_lock(&m);
 
@@ -98,7 +98,7 @@ void *consumer(void *param)
 
         pthread_cond_signal(&c_prod);
 
-        printf("Consumre value: %d\n", i);
+        printf("Consumer value: %d\n", i);
         fflush(stdout);
     }
 
